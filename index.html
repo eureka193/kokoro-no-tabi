@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Playfair+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <title>Stress Diary</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">こころの旅</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">ホーム</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#copingModal" href="#"
+                            onclick="showCopings()">コーピングリスト</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a class="nav-link" data-bs-toggle="modal" data-bs-target="#infoModal" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container my-4">
+        <h1 class="text-center">こころの旅</h1>
+        <div>
+            <p>この日記をつけることで、自分の気持ちを整理したり、何に対して、どれくらいストレスを感じているのかを「見える化」することができます。<br>そこから、なんだか重い気持ちを軽くする方法のヒントを見つけられるかもしれません。<br>「心の旅」で自分を理解し、自分との接し方を学んでみませんか？<br>※使い方がわからない・例が欲しい時は<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg>ボタンを押してみよう！
+            </p>
+        </div>
+        <div>
+            <hr>
+            <h2>ストレス値 <a cclass="nav-link" data-bs-toggle="modal" data-bs-target="#stressModal" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+            </svg></a></h2>
+            <hr>
+            <p>今現在日記を書いてる自分がどれだけストレスを感じているのかを数値化してみましょう。</p>
+            <div class="card gauge">
+                <div class="range-slider">
+                    <span id="rs-bullet" class="rs-label">0</span>
+                    <input id="rs-range-line" class="rs-range" type="range" value="0" min="0" max="100">
+                </div>
+                <div class="box-minmax">
+                    <span>0</span><span>100</span>
+                </div>
+                <div>
+                    <button href="#" class="btn btn-primary enter" id="button">決定</button>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <h2>日記 <a cclass="nav-link" data-bs-toggle="modal" data-bs-target="#nikkiModal" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg></a></h2>
+        <hr>
+        <p>今日起こった出来事や感じたことについて、質問に答えながら書き出してみましょう。<br>質問の回答以外に記録しておきたいことがあれば、最後に自由に記述する欄もあります。</p>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">日記を記入</h5>
+                <p class="card-text" id="js-question">最近嬉しかったことは何ですか？</p>
+                <div class="mb-3" id="js-answer">
+
+                    <textarea class="form-control" id="addTxt" rows="3"></textarea>
+                </div>
+                <button href="#" class="btn btn-primary" id="js-backbtn">戻る</button>
+                <button href="#" class="btn btn-primary" id="js-nextbtn">次へ</button>
+                <button href="#" class="btn btn-primary" id="addBtn">保存</button>
+<!-- 保存ボタン最後のモーダルで表示 -->
+            </div>
+        </div>
+        <hr>
+        <h2>記録 <a cclass="nav-link" data-bs-toggle="modal" data-bs-target="#kirokuModal" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+        </svg></a></h2>
+        <hr>
+        <p>自分の気持ちやそれに伴った自分の行動について記した日記には、自分は何をしていて楽しいのか・何をすると気分が上がるのかのヒントがあるはずです。ここでは、そのヒントととなる言葉をハイライトし、「コーピングリスト」に記録します。</p>
+<!-- 「自分の好きな言葉を選びましょう・キーワードが何かの説明」 -->
+<!-- コーピングリストのボタンを説明の直後に -->
+<!-- どの質問の答えかによって色変更 -->
+<!-- ヘルプボタン、使い方の説明をスクショ込みで -->
+<!-- コーピングとは？ストレスを感じた時に緩和できるためのリストです。。。シンプルなことでいい！意外と日常で行っているもの　例もいれる：ジョギング・音楽を聴く -->
+<!-- コーピングって何？←リンク、onclickモーダルが開く -->
+
+
+<!-- 日記で：感情の名前の隣に絵文字:bootstrap -->
+        <div id="stories" class="row container-fluid">
+        </div>
+        <div>
+            <hr>
+            <p class="text-center">おつかれさまでした！明日も日記を書くことを心がけましょう。</p>
+        </div>
+        <!-- gauge -->
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="copingModal" tabindex="-1" aria-labelledby="copingModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="copingModalLabel">コーピングリスト</h5>
+                        <button type="button" class="btn btn-default btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <div class="x">x</div>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="copings"></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal2-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoModalLabel">コーピングリストとは？</h5>
+                        <button type="button" class="btn btn-default btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            <div class="x">x</div>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="copinginfo">
+                        <p>気分が浮かなかったり、何をするにも気が進まない時は、<br>「コーピングリスト」を開いてみましょう！<br>過去の自分が「楽しかった」・「気持ちが前向きになった」きっかけやヒントがあるはずです。</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="stressModal" tabindex="-1" aria-labelledby="stressModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal3-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="stressModalLabel">ストレス値とは？</h5>
+                            <button type="button" class="btn btn-default btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <div class="x">x</div>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="stressinfo">
+                            <p>例１）テストが終わって解放された、だけど少し結果が不安：25<br>例２）部活の大会が迫ってきていて、緊張してるけどワクワクもしてる：50</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="nikkiModal" tabindex="-1" aria-labelledby="nikkiModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal4-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="nikkiModalLabel">日記の書き方</h5>
+                            <button type="button" class="btn btn-default btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <div class="x">x</div>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="nikkiinfo">
+                            <p>例）今日は、明日が期限の課題をやらないといけないってわかっててもやりたくなくて、それで午前中はずっとモヤモヤしてた。<br>でも学校でAさんとその話をしてたらAもやってなくて、放課後一緒に頑張ることになった。なんとか終わってすっきりした。</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="kirokuModal" tabindex="-1" aria-labelledby="kirokuModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal5-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="kirokuModalLabel">日記の書き方</h5>
+                            <button type="button" class="btn btn-default btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <div class="x">x</div>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="kirokuinfo">
+                            <p>毎日日記とそのハイライト・考察を続けていくことでより多くのキーワード、すなわち自分にとっての「切り替えスイッチ」が溜まっていきます。<br>
+                            気分が浮かなかったり、何をするにも気が進まない時は、「コーピングリスト」を開いてみましょう！<br>
+                            過去の自分が「楽しかった」・「気持ちが前向きになった」きっかけやヒントがあるはずです。
+                            <br><br>キーワードの例）「友達と電話」「お散歩」「猫吸い」
+                                </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <!-- 「記録」の下にコーピングリストの説明、説明入れる -->
+        <!-- 細かいバグの改善 -->
+
+
+        <!-- Optional JavaScript; choose one of the two! -->
+
+        <!-- Option 1: Bootstrap Bundle with Popper -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous">
+        </script>
+        <script src="js/script.js"></script>
+        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
+</body>
+
+<footer> &copy; Yurika Shimoyama</footer>
+
+</html>
